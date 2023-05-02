@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="bg-primary text-light md-text-center sm-text-left shadow mb-20 pt-5">
+        <div class="container p-5 bg-dark">
+            <div class="row">
+                <div class="d-md-flex bg-dark md-align-items-center md-justify-content-evenly sm-text-left">
+                    <h1 class="col md-text-center bg-dark sm-text-left">{{ current_user.email }}</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sm-justify-content-start">
+        <div class="container p-10">
+            <div class="row"><br>
+                <h3 class="p-5 text-left text-decoration-underline">Here are your profile details</h3>
+                <ul class="list-group text-start">
+                    <li class="list-group-item">Email : {{ current_user.email }}</li>
+                    <li class="list-group-item">Your Key : {{ current_user.token }}</li>
+                </ul>
+            </div>
+            
+        </div>
+    </section>
+
+    {% endblock %}

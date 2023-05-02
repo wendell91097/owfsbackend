@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="bg-primary text-light shadow">
+    <div class="container p-5 pb-3 bg-primary">
+        <div class="row">
+            <div class="d-flex bg-primary text-left">
+                <h1 class="col">Welcome! <i class="fa-solid fa-gear fa-spin" style="color: #3f3e42;"></i></h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bg-light">
+    <div class="container p-5">
+        <div class="row">
+            <div class="d-flex align-items-center justify-content-center">
+                {% if current_user.is_authenticated %}
+                    <div class="col">
+                        <h4>Way to be signed in!</h4>
+                        <a href="{{ url_for('site.profile') }}">
+                            <button class="btn btn-primary my-3">
+                            Profile
+                            </button>
+                        </a>
+                        
+                    </div>
+                {% else %}
+
+                <div class="col justify-content-start text-left">
+                    <h4>For returning users:</h4>
+                    <a href="{{ url_for('auth.signin') }}">
+                        <button class="btn btn-primary my-3 px-3">
+                            Log In
+                        </button>
+                    </a>
+                    <div class="d-flex fd-row align-items-center"><h4>New Users: </h4>
+                        <a class="btn btn-light border-info my-3 mx-2"
+                        type="button" 
+                        data-bs-toggle="collapse" 
+                        href="#siteInfoCard" 
+                        role="button" 
+                        aria-expanded="false" 
+                        aria-controls="siteInfoCard">
+                        <h5><i class="fa-solid fa-question"></i></h5>
+                        </a>
+                    </div>
+
+                    <div class="col">
+                        <div class="collapse" id="siteInfoCard">
+                        <div class="card card-body" style="width: 77vw;">
+                            This site is mainly useful for receiving an API key to access the Review databases. 
+                            Users simply need an email and password to sign up & log in, and from there, they 
+                            can use their API key to access public and handle their own private reviews.
+                        </div>
+                        </div>
+                    </div>
+
+                    <a href="{{ url_for('auth.signup') }}">
+                        <button class="btn btn-primary my-3">
+                            Log Up
+                        </button> 
+                    </a>
+                </div>
+             
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
